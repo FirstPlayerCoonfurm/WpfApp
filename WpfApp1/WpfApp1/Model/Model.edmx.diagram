@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c833d413e2ae427c884ada40aa68a749" Name="Diagram1">
+        <EntityTypeShape EntityType="DrozdovModel.Ангар" Width="1.5" PointX="8.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrozdovModel.Вакцинация" Width="1.5" PointX="8.25" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrozdovModel.Вес" Width="1.5" PointX="8.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrozdovModel.Заказы" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrozdovModel.Заказы_у_поставщиков" Width="1.5" PointX="3.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrozdovModel.Зарплата_сотрудника" Width="1.5" PointX="10.5" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrozdovModel.Зарплаты" Width="1.5" PointX="8.25" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrozdovModel.Клиенты" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrozdovModel.Корма" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrozdovModel.Коровы" Width="1.5" PointX="6" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrozdovModel.Лекарства" Width="1.5" PointX="6" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrozdovModel.МедКнижка" Width="1.5" PointX="10.5" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrozdovModel.Объём_продаж" Width="1.5" PointX="3" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrozdovModel.Операция" Width="1.5" PointX="9" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrozdovModel.Породы" Width="1.5" PointX="3.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrozdovModel.Поставщики" Width="1.5" PointX="1.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrozdovModel.Продукция" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrozdovModel.Склад" Width="1.5" PointX="3" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrozdovModel.Сотрудники" Width="1.5" PointX="6" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrozdovModel.Уход_за_животными" Width="1.5" PointX="11.25" PointY="9.5" IsExpanded="true" />
+        <AssociationConnector Association="DrozdovModel.FK__Ангар__Id_исполь__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__Ангар__Id_исполь__778AC167" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__Ангар__Id_коровы__797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__Ангар__Id_сотруд__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__Вакцинаци__Id_За__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__МедКнижка__Id_пр__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__Вес__Id_коровы__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__Заказы__Id_клиен__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__Заказы__Id_проду__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__Корма__Id_заказа__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__Заказы_у___Id_по__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__Лекарства__Id_За__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__Зарплата___Id_Вы__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__Зарплата___Id_Со__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__Зарплаты__Id_сот__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__МедКнижка__Id_пр__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__Коровы__Id_пород__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__Коровы__Id_проду__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__Уход_за_ж__Id_ко__7D439ABD" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__МедКнижка__Id_пр__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__Объём_про__Id_пр__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__Уход_за_ж__Id_оп__7E37BEF6" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__Склад__Id_продук__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="DrozdovModel.FK__Уход_за_ж__Id_со__7C4F7684" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DrozdovModel.sysdiagrams" Width="1.5" PointX="8.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,670 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DrozdovModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Ангар">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Адрес" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Id_используемого_корма" Type="Int32" />
+    <Property Name="Id_используемого_лекарства" Type="Int32" />
+    <Property Name="Id_сотрудника" Type="Int32" />
+    <Property Name="Id_коровы" Type="Int32" />
+    <NavigationProperty Name="Корма" Relationship="Self.FK__Ангар__Id_исполь__76969D2E" FromRole="Ангар" ToRole="Корма" />
+    <NavigationProperty Name="Лекарства" Relationship="Self.FK__Ангар__Id_исполь__778AC167" FromRole="Ангар" ToRole="Лекарства" />
+    <NavigationProperty Name="Коровы" Relationship="Self.FK__Ангар__Id_коровы__797309D9" FromRole="Ангар" ToRole="Коровы" />
+    <NavigationProperty Name="Сотрудники" Relationship="Self.FK__Ангар__Id_сотруд__787EE5A0" FromRole="Ангар" ToRole="Сотрудники" />
+  </EntityType>
+  <EntityType Name="Вакцинация">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id_Заказа" Type="Int32" />
+    <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Описание" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Срок_годности" Type="DateTime" Precision="0" />
+    <Property Name="Дата_вакцинации" Type="DateTime" Precision="0" />
+    <Property Name="Дозировка" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Заказы_у_поставщиков" Relationship="Self.FK__Вакцинаци__Id_За__619B8048" FromRole="Вакцинация" ToRole="Заказы_у_поставщиков" />
+    <NavigationProperty Name="МедКнижка" Relationship="Self.FK__МедКнижка__Id_пр__73BA3083" FromRole="Вакцинация" ToRole="МедКнижка" />
+  </EntityType>
+  <EntityType Name="Вес">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id_коровы" Type="Int32" />
+    <Property Name="Дата_измерения" Type="DateTime" Precision="0" />
+    <Property Name="Вес1" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="Единица_измерения" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Примечание" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Коровы" Relationship="Self.FK__Вес__Id_коровы__59063A47" FromRole="Вес" ToRole="Коровы" />
+  </EntityType>
+  <EntityType Name="Заказы">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id_клиента" Type="Int32" />
+    <Property Name="Id_продукции" Type="Int32" />
+    <Property Name="Дата_заказа" Type="DateTime" Precision="0" />
+    <Property Name="Статус_заказа" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Клиенты" Relationship="Self.FK__Заказы__Id_клиен__47DBAE45" FromRole="Заказы" ToRole="Клиенты" />
+    <NavigationProperty Name="Продукция" Relationship="Self.FK__Заказы__Id_проду__48CFD27E" FromRole="Заказы" ToRole="Продукция" />
+    <NavigationProperty Name="Корма" Relationship="Self.FK__Корма__Id_заказа__5EBF139D" FromRole="Заказы" ToRole="Корма" />
+  </EntityType>
+  <EntityType Name="Заказы_у_поставщиков">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id_поставщика" Type="Int32" />
+    <Property Name="Название_товара" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Количество_заказанного_товара" Type="Int32" />
+    <Property Name="Дата_заказа" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Вакцинация" Relationship="Self.FK__Вакцинаци__Id_За__619B8048" FromRole="Заказы_у_поставщиков" ToRole="Вакцинация" />
+    <NavigationProperty Name="Поставщики" Relationship="Self.FK__Заказы_у___Id_по__5629CD9C" FromRole="Заказы_у_поставщиков" ToRole="Поставщики" />
+    <NavigationProperty Name="Лекарства" Relationship="Self.FK__Лекарства__Id_За__5BE2A6F2" FromRole="Заказы_у_поставщиков" ToRole="Лекарства" />
+  </EntityType>
+  <EntityType Name="Зарплата_сотрудника">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id_Выплаты" Type="Int32" />
+    <Property Name="Id_Сотрудника" Type="Int32" />
+    <NavigationProperty Name="Зарплаты" Relationship="Self.FK__Зарплата___Id_Вы__693CA210" FromRole="Зарплата_сотрудника" ToRole="Зарплаты" />
+    <NavigationProperty Name="Сотрудники" Relationship="Self.FK__Зарплата___Id_Со__6A30C649" FromRole="Зарплата_сотрудника" ToRole="Сотрудники" />
+  </EntityType>
+  <EntityType Name="Зарплаты">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id_сотрудника" Type="Int32" />
+    <Property Name="Дата_выплаты" Type="DateTime" Precision="0" />
+    <Property Name="Сумма_выплаты" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="Зарплата_сотрудника" Relationship="Self.FK__Зарплата___Id_Вы__693CA210" FromRole="Зарплаты" ToRole="Зарплата_сотрудника" />
+    <NavigationProperty Name="Сотрудники" Relationship="Self.FK__Зарплаты__Id_сот__66603565" FromRole="Зарплаты" ToRole="Сотрудники" />
+  </EntityType>
+  <EntityType Name="Клиенты">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Телефон" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Адрес" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Уровень_доступа" Type="Int32" />
+    <NavigationProperty Name="Заказы" Relationship="Self.FK__Заказы__Id_клиен__47DBAE45" FromRole="Клиенты" ToRole="Заказы" />
+  </EntityType>
+  <EntityType Name="Корма">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id_заказа" Type="Int32" />
+    <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Описание" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Питательные_свойства" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Дата_использования" Type="DateTime" Precision="0" />
+    <Property Name="Количество_использованного_корма" Type="Decimal" Precision="8" Scale="2" />
+    <NavigationProperty Name="Ангар" Relationship="Self.FK__Ангар__Id_исполь__76969D2E" FromRole="Корма" ToRole="Ангар" />
+    <NavigationProperty Name="Заказы" Relationship="Self.FK__Корма__Id_заказа__5EBF139D" FromRole="Корма" ToRole="Заказы" />
+    <NavigationProperty Name="МедКнижка" Relationship="Self.FK__МедКнижка__Id_пр__71D1E811" FromRole="Корма" ToRole="МедКнижка" />
+  </EntityType>
+  <EntityType Name="Коровы">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id_породы" Type="Int32" />
+    <Property Name="Id_продукции" Type="Int32" />
+    <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Возраст" Type="Int32" />
+    <Property Name="Пол" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Здоровье" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Вес" Type="Decimal" Precision="6" Scale="2" />
+    <NavigationProperty Name="Ангар" Relationship="Self.FK__Ангар__Id_коровы__797309D9" FromRole="Коровы" ToRole="Ангар" />
+    <NavigationProperty Name="Вес1" Relationship="Self.FK__Вес__Id_коровы__59063A47" FromRole="Коровы" ToRole="Вес" />
+    <NavigationProperty Name="Породы" Relationship="Self.FK__Коровы__Id_пород__5070F446" FromRole="Коровы" ToRole="Породы" />
+    <NavigationProperty Name="Продукция" Relationship="Self.FK__Коровы__Id_проду__5165187F" FromRole="Коровы" ToRole="Продукция" />
+    <NavigationProperty Name="Уход_за_животными" Relationship="Self.FK__Уход_за_ж__Id_ко__7D439ABD" FromRole="Коровы" ToRole="Уход_за_животными" />
+  </EntityType>
+  <EntityType Name="Лекарства">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id_Заказа" Type="Int32" />
+    <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Описание" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Срок_годности" Type="DateTime" Precision="0" />
+    <Property Name="Дозировка" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Дата_использования" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Ангар" Relationship="Self.FK__Ангар__Id_исполь__778AC167" FromRole="Лекарства" ToRole="Ангар" />
+    <NavigationProperty Name="Заказы_у_поставщиков" Relationship="Self.FK__Лекарства__Id_За__5BE2A6F2" FromRole="Лекарства" ToRole="Заказы_у_поставщиков" />
+    <NavigationProperty Name="МедКнижка" Relationship="Self.FK__МедКнижка__Id_пр__72C60C4A" FromRole="Лекарства" ToRole="МедКнижка" />
+  </EntityType>
+  <EntityType Name="МедКнижка">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id_принимаемого_корма" Type="Int32" />
+    <Property Name="Id_принимаемых_лекарств" Type="Int32" />
+    <Property Name="Id_пройденной_вакцинации" Type="Int32" />
+    <NavigationProperty Name="Вакцинация" Relationship="Self.FK__МедКнижка__Id_пр__73BA3083" FromRole="МедКнижка" ToRole="Вакцинация" />
+    <NavigationProperty Name="Корма" Relationship="Self.FK__МедКнижка__Id_пр__71D1E811" FromRole="МедКнижка" ToRole="Корма" />
+    <NavigationProperty Name="Лекарства" Relationship="Self.FK__МедКнижка__Id_пр__72C60C4A" FromRole="МедКнижка" ToRole="Лекарства" />
+  </EntityType>
+  <EntityType Name="Объём_продаж">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id_продукта" Type="Int32" />
+    <Property Name="Название_продукта" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Количество_продукции" Type="Int32" />
+    <Property Name="Цена_продукции" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Дата_продажи" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Продукция" Relationship="Self.FK__Объём_про__Id_пр__6EF57B66" FromRole="Объём_продаж" ToRole="Продукция" />
+  </EntityType>
+  <EntityType Name="Операция">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Тип_операции" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Статус_операции" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Уход_за_животными" Relationship="Self.FK__Уход_за_ж__Id_оп__7E37BEF6" FromRole="Операция" ToRole="Уход_за_животными" />
+  </EntityType>
+  <EntityType Name="Породы">
+    <Key>
+      <PropertyRef Name="Id_породы" />
+    </Key>
+    <Property Name="Id_породы" Type="Int32" Nullable="false" />
+    <Property Name="Название_породы" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Коровы" Relationship="Self.FK__Коровы__Id_пород__5070F446" FromRole="Породы" ToRole="Коровы" />
+  </EntityType>
+  <EntityType Name="Поставщики">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Название_компании" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Контактная_информация" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Тип_поставляемых_материалов" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Заказы_у_поставщиков" Relationship="Self.FK__Заказы_у___Id_по__5629CD9C" FromRole="Поставщики" ToRole="Заказы_у_поставщиков" />
+  </EntityType>
+  <EntityType Name="Продукция">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Тип" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Описание" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Цена" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Единица_измерения" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Заказы" Relationship="Self.FK__Заказы__Id_проду__48CFD27E" FromRole="Продукция" ToRole="Заказы" />
+    <NavigationProperty Name="Коровы" Relationship="Self.FK__Коровы__Id_проду__5165187F" FromRole="Продукция" ToRole="Коровы" />
+    <NavigationProperty Name="Объём_продаж" Relationship="Self.FK__Объём_про__Id_пр__6EF57B66" FromRole="Продукция" ToRole="Объём_продаж" />
+    <NavigationProperty Name="Склад" Relationship="Self.FK__Склад__Id_продук__4BAC3F29" FromRole="Продукция" ToRole="Склад" />
+  </EntityType>
+  <EntityType Name="Склад">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id_продукта" Type="Int32" />
+    <Property Name="Количество" Type="Int32" />
+    <NavigationProperty Name="Продукция" Relationship="Self.FK__Склад__Id_продук__4BAC3F29" FromRole="Склад" ToRole="Продукция" />
+  </EntityType>
+  <EntityType Name="Сотрудники">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="ФИО" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Должность" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Дата_приёма_на_работу" Type="DateTime" Precision="0" />
+    <Property Name="Стаж_работы_на_ферме" Type="Int32" />
+    <NavigationProperty Name="Ангар" Relationship="Self.FK__Ангар__Id_сотруд__787EE5A0" FromRole="Сотрудники" ToRole="Ангар" />
+    <NavigationProperty Name="Зарплата_сотрудника" Relationship="Self.FK__Зарплата___Id_Со__6A30C649" FromRole="Сотрудники" ToRole="Зарплата_сотрудника" />
+    <NavigationProperty Name="Зарплаты" Relationship="Self.FK__Зарплаты__Id_сот__66603565" FromRole="Сотрудники" ToRole="Зарплаты" />
+    <NavigationProperty Name="Уход_за_животными" Relationship="Self.FK__Уход_за_ж__Id_со__7C4F7684" FromRole="Сотрудники" ToRole="Уход_за_животными" />
+    <Property Name="Роль" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Уход_за_животными">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id_сотрудника" Type="Int32" />
+    <Property Name="Id_коровы" Type="Int32" />
+    <Property Name="Id_операции" Type="Int32" />
+    <NavigationProperty Name="Коровы" Relationship="Self.FK__Уход_за_ж__Id_ко__7D439ABD" FromRole="Уход_за_животными" ToRole="Коровы" />
+    <NavigationProperty Name="Операция" Relationship="Self.FK__Уход_за_ж__Id_оп__7E37BEF6" FromRole="Уход_за_животными" ToRole="Операция" />
+    <NavigationProperty Name="Сотрудники" Relationship="Self.FK__Уход_за_ж__Id_со__7C4F7684" FromRole="Уход_за_животными" ToRole="Сотрудники" />
+  </EntityType>
+  <Association Name="FK__Ангар__Id_исполь__76969D2E">
+    <End Role="Корма" Type="Self.Корма" Multiplicity="0..1" />
+    <End Role="Ангар" Type="Self.Ангар" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Корма">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ангар">
+        <PropertyRef Name="Id_используемого_корма" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ангар__Id_исполь__778AC167">
+    <End Role="Лекарства" Type="Self.Лекарства" Multiplicity="0..1" />
+    <End Role="Ангар" Type="Self.Ангар" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Лекарства">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ангар">
+        <PropertyRef Name="Id_используемого_лекарства" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ангар__Id_коровы__797309D9">
+    <End Role="Коровы" Type="Self.Коровы" Multiplicity="0..1" />
+    <End Role="Ангар" Type="Self.Ангар" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Коровы">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ангар">
+        <PropertyRef Name="Id_коровы" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ангар__Id_сотруд__787EE5A0">
+    <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="0..1" />
+    <End Role="Ангар" Type="Self.Ангар" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сотрудники">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ангар">
+        <PropertyRef Name="Id_сотрудника" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Вакцинаци__Id_За__619B8048">
+    <End Role="Заказы_у_поставщиков" Type="Self.Заказы_у_поставщиков" Multiplicity="0..1" />
+    <End Role="Вакцинация" Type="Self.Вакцинация" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Заказы_у_поставщиков">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Вакцинация">
+        <PropertyRef Name="Id_Заказа" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__МедКнижка__Id_пр__73BA3083">
+    <End Role="Вакцинация" Type="Self.Вакцинация" Multiplicity="0..1" />
+    <End Role="МедКнижка" Type="Self.МедКнижка" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Вакцинация">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="МедКнижка">
+        <PropertyRef Name="Id_пройденной_вакцинации" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Вес__Id_коровы__59063A47">
+    <End Role="Коровы" Type="Self.Коровы" Multiplicity="0..1" />
+    <End Role="Вес" Type="Self.Вес" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Коровы">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Вес">
+        <PropertyRef Name="Id_коровы" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Заказы__Id_клиен__47DBAE45">
+    <End Role="Клиенты" Type="Self.Клиенты" Multiplicity="0..1" />
+    <End Role="Заказы" Type="Self.Заказы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Клиенты">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Заказы">
+        <PropertyRef Name="Id_клиента" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Заказы__Id_проду__48CFD27E">
+    <End Role="Продукция" Type="Self.Продукция" Multiplicity="0..1" />
+    <End Role="Заказы" Type="Self.Заказы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Продукция">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Заказы">
+        <PropertyRef Name="Id_продукции" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Корма__Id_заказа__5EBF139D">
+    <End Role="Заказы" Type="Self.Заказы" Multiplicity="0..1" />
+    <End Role="Корма" Type="Self.Корма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Заказы">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Корма">
+        <PropertyRef Name="Id_заказа" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Заказы_у___Id_по__5629CD9C">
+    <End Role="Поставщики" Type="Self.Поставщики" Multiplicity="0..1" />
+    <End Role="Заказы_у_поставщиков" Type="Self.Заказы_у_поставщиков" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Поставщики">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Заказы_у_поставщиков">
+        <PropertyRef Name="Id_поставщика" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Лекарства__Id_За__5BE2A6F2">
+    <End Role="Заказы_у_поставщиков" Type="Self.Заказы_у_поставщиков" Multiplicity="0..1" />
+    <End Role="Лекарства" Type="Self.Лекарства" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Заказы_у_поставщиков">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Лекарства">
+        <PropertyRef Name="Id_Заказа" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Зарплата___Id_Вы__693CA210">
+    <End Role="Зарплаты" Type="Self.Зарплаты" Multiplicity="0..1" />
+    <End Role="Зарплата_сотрудника" Type="Self.Зарплата_сотрудника" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Зарплаты">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Зарплата_сотрудника">
+        <PropertyRef Name="Id_Выплаты" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Зарплата___Id_Со__6A30C649">
+    <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="0..1" />
+    <End Role="Зарплата_сотрудника" Type="Self.Зарплата_сотрудника" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сотрудники">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Зарплата_сотрудника">
+        <PropertyRef Name="Id_Сотрудника" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Зарплаты__Id_сот__66603565">
+    <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="0..1" />
+    <End Role="Зарплаты" Type="Self.Зарплаты" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сотрудники">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Зарплаты">
+        <PropertyRef Name="Id_сотрудника" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__МедКнижка__Id_пр__71D1E811">
+    <End Role="Корма" Type="Self.Корма" Multiplicity="0..1" />
+    <End Role="МедКнижка" Type="Self.МедКнижка" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Корма">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="МедКнижка">
+        <PropertyRef Name="Id_принимаемого_корма" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Коровы__Id_пород__5070F446">
+    <End Role="Породы" Type="Self.Породы" Multiplicity="0..1" />
+    <End Role="Коровы" Type="Self.Коровы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Породы">
+        <PropertyRef Name="Id_породы" />
+      </Principal>
+      <Dependent Role="Коровы">
+        <PropertyRef Name="Id_породы" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Коровы__Id_проду__5165187F">
+    <End Role="Продукция" Type="Self.Продукция" Multiplicity="0..1" />
+    <End Role="Коровы" Type="Self.Коровы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Продукция">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Коровы">
+        <PropertyRef Name="Id_продукции" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Уход_за_ж__Id_ко__7D439ABD">
+    <End Role="Коровы" Type="Self.Коровы" Multiplicity="0..1" />
+    <End Role="Уход_за_животными" Type="Self.Уход_за_животными" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Коровы">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Уход_за_животными">
+        <PropertyRef Name="Id_коровы" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__МедКнижка__Id_пр__72C60C4A">
+    <End Role="Лекарства" Type="Self.Лекарства" Multiplicity="0..1" />
+    <End Role="МедКнижка" Type="Self.МедКнижка" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Лекарства">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="МедКнижка">
+        <PropertyRef Name="Id_принимаемых_лекарств" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Объём_про__Id_пр__6EF57B66">
+    <End Role="Продукция" Type="Self.Продукция" Multiplicity="0..1" />
+    <End Role="Объём_продаж" Type="Self.Объём_продаж" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Продукция">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Объём_продаж">
+        <PropertyRef Name="Id_продукта" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Уход_за_ж__Id_оп__7E37BEF6">
+    <End Role="Операция" Type="Self.Операция" Multiplicity="0..1" />
+    <End Role="Уход_за_животными" Type="Self.Уход_за_животными" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Операция">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Уход_за_животными">
+        <PropertyRef Name="Id_операции" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Склад__Id_продук__4BAC3F29">
+    <End Role="Продукция" Type="Self.Продукция" Multiplicity="0..1" />
+    <End Role="Склад" Type="Self.Склад" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Продукция">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Склад">
+        <PropertyRef Name="Id_продукта" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Уход_за_ж__Id_со__7C4F7684">
+    <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="0..1" />
+    <End Role="Уход_за_животными" Type="Self.Уход_за_животными" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сотрудники">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Уход_за_животными">
+        <PropertyRef Name="Id_сотрудника" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DrozdovEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Ангар" EntityType="Self.Ангар" />
+    <EntitySet Name="Вакцинация" EntityType="Self.Вакцинация" />
+    <EntitySet Name="Вес" EntityType="Self.Вес" />
+    <EntitySet Name="Заказы" EntityType="Self.Заказы" />
+    <EntitySet Name="Заказы_у_поставщиков" EntityType="Self.Заказы_у_поставщиков" />
+    <EntitySet Name="Зарплата_сотрудника" EntityType="Self.Зарплата_сотрудника" />
+    <EntitySet Name="Зарплаты" EntityType="Self.Зарплаты" />
+    <EntitySet Name="Клиенты" EntityType="Self.Клиенты" />
+    <EntitySet Name="Корма" EntityType="Self.Корма" />
+    <EntitySet Name="Коровы" EntityType="Self.Коровы" />
+    <EntitySet Name="Лекарства" EntityType="Self.Лекарства" />
+    <EntitySet Name="МедКнижка" EntityType="Self.МедКнижка" />
+    <EntitySet Name="Объём_продаж" EntityType="Self.Объём_продаж" />
+    <EntitySet Name="Операция" EntityType="Self.Операция" />
+    <EntitySet Name="Породы" EntityType="Self.Породы" />
+    <EntitySet Name="Поставщики" EntityType="Self.Поставщики" />
+    <EntitySet Name="Продукция" EntityType="Self.Продукция" />
+    <EntitySet Name="Склад" EntityType="Self.Склад" />
+    <EntitySet Name="Сотрудники" EntityType="Self.Сотрудники" />
+    <EntitySet Name="Уход_за_животными" EntityType="Self.Уход_за_животными" />
+    <AssociationSet Name="FK__Ангар__Id_исполь__76969D2E" Association="Self.FK__Ангар__Id_исполь__76969D2E">
+      <End Role="Корма" EntitySet="Корма" />
+      <End Role="Ангар" EntitySet="Ангар" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ангар__Id_исполь__778AC167" Association="Self.FK__Ангар__Id_исполь__778AC167">
+      <End Role="Лекарства" EntitySet="Лекарства" />
+      <End Role="Ангар" EntitySet="Ангар" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ангар__Id_коровы__797309D9" Association="Self.FK__Ангар__Id_коровы__797309D9">
+      <End Role="Коровы" EntitySet="Коровы" />
+      <End Role="Ангар" EntitySet="Ангар" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ангар__Id_сотруд__787EE5A0" Association="Self.FK__Ангар__Id_сотруд__787EE5A0">
+      <End Role="Сотрудники" EntitySet="Сотрудники" />
+      <End Role="Ангар" EntitySet="Ангар" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Вакцинаци__Id_За__619B8048" Association="Self.FK__Вакцинаци__Id_За__619B8048">
+      <End Role="Заказы_у_поставщиков" EntitySet="Заказы_у_поставщиков" />
+      <End Role="Вакцинация" EntitySet="Вакцинация" />
+    </AssociationSet>
+    <AssociationSet Name="FK__МедКнижка__Id_пр__73BA3083" Association="Self.FK__МедКнижка__Id_пр__73BA3083">
+      <End Role="Вакцинация" EntitySet="Вакцинация" />
+      <End Role="МедКнижка" EntitySet="МедКнижка" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Вес__Id_коровы__59063A47" Association="Self.FK__Вес__Id_коровы__59063A47">
+      <End Role="Коровы" EntitySet="Коровы" />
+      <End Role="Вес" EntitySet="Вес" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Заказы__Id_клиен__47DBAE45" Association="Self.FK__Заказы__Id_клиен__47DBAE45">
+      <End Role="Клиенты" EntitySet="Клиенты" />
+      <End Role="Заказы" EntitySet="Заказы" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Заказы__Id_проду__48CFD27E" Association="Self.FK__Заказы__Id_проду__48CFD27E">
+      <End Role="Продукция" EntitySet="Продукция" />
+      <End Role="Заказы" EntitySet="Заказы" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Корма__Id_заказа__5EBF139D" Association="Self.FK__Корма__Id_заказа__5EBF139D">
+      <End Role="Заказы" EntitySet="Заказы" />
+      <End Role="Корма" EntitySet="Корма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Заказы_у___Id_по__5629CD9C" Association="Self.FK__Заказы_у___Id_по__5629CD9C">
+      <End Role="Поставщики" EntitySet="Поставщики" />
+      <End Role="Заказы_у_поставщиков" EntitySet="Заказы_у_поставщиков" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Лекарства__Id_За__5BE2A6F2" Association="Self.FK__Лекарства__Id_За__5BE2A6F2">
+      <End Role="Заказы_у_поставщиков" EntitySet="Заказы_у_поставщиков" />
+      <End Role="Лекарства" EntitySet="Лекарства" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Зарплата___Id_Вы__693CA210" Association="Self.FK__Зарплата___Id_Вы__693CA210">
+      <End Role="Зарплаты" EntitySet="Зарплаты" />
+      <End Role="Зарплата_сотрудника" EntitySet="Зарплата_сотрудника" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Зарплата___Id_Со__6A30C649" Association="Self.FK__Зарплата___Id_Со__6A30C649">
+      <End Role="Сотрудники" EntitySet="Сотрудники" />
+      <End Role="Зарплата_сотрудника" EntitySet="Зарплата_сотрудника" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Зарплаты__Id_сот__66603565" Association="Self.FK__Зарплаты__Id_сот__66603565">
+      <End Role="Сотрудники" EntitySet="Сотрудники" />
+      <End Role="Зарплаты" EntitySet="Зарплаты" />
+    </AssociationSet>
+    <AssociationSet Name="FK__МедКнижка__Id_пр__71D1E811" Association="Self.FK__МедКнижка__Id_пр__71D1E811">
+      <End Role="Корма" EntitySet="Корма" />
+      <End Role="МедКнижка" EntitySet="МедКнижка" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Коровы__Id_пород__5070F446" Association="Self.FK__Коровы__Id_пород__5070F446">
+      <End Role="Породы" EntitySet="Породы" />
+      <End Role="Коровы" EntitySet="Коровы" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Коровы__Id_проду__5165187F" Association="Self.FK__Коровы__Id_проду__5165187F">
+      <End Role="Продукция" EntitySet="Продукция" />
+      <End Role="Коровы" EntitySet="Коровы" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Уход_за_ж__Id_ко__7D439ABD" Association="Self.FK__Уход_за_ж__Id_ко__7D439ABD">
+      <End Role="Коровы" EntitySet="Коровы" />
+      <End Role="Уход_за_животными" EntitySet="Уход_за_животными" />
+    </AssociationSet>
+    <AssociationSet Name="FK__МедКнижка__Id_пр__72C60C4A" Association="Self.FK__МедКнижка__Id_пр__72C60C4A">
+      <End Role="Лекарства" EntitySet="Лекарства" />
+      <End Role="МедКнижка" EntitySet="МедКнижка" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Объём_про__Id_пр__6EF57B66" Association="Self.FK__Объём_про__Id_пр__6EF57B66">
+      <End Role="Продукция" EntitySet="Продукция" />
+      <End Role="Объём_продаж" EntitySet="Объём_продаж" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Уход_за_ж__Id_оп__7E37BEF6" Association="Self.FK__Уход_за_ж__Id_оп__7E37BEF6">
+      <End Role="Операция" EntitySet="Операция" />
+      <End Role="Уход_за_животными" EntitySet="Уход_за_животными" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Склад__Id_продук__4BAC3F29" Association="Self.FK__Склад__Id_продук__4BAC3F29">
+      <End Role="Продукция" EntitySet="Продукция" />
+      <End Role="Склад" EntitySet="Склад" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Уход_за_ж__Id_со__7C4F7684" Association="Self.FK__Уход_за_ж__Id_со__7C4F7684">
+      <End Role="Сотрудники" EntitySet="Сотрудники" />
+      <End Role="Уход_за_животными" EntitySet="Уход_за_животными" />
+    </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="DrozdovModel.sysdiagrams" />
+  </EntityContainer>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+</Schema>

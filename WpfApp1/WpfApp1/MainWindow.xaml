@@ -1,0 +1,34 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Коровник" Height="450" Width="800" ResizeMode="NoResize">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FFCDFF75" Offset="0.75"/>
+                <GradientStop Color="White"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBox x:Name="loginBox" Margin="30" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"></TextBox>
+        <Button x:Name="authButt" Margin="40" Click="Lol" Grid.Column="2" Grid.Row="2">Войти</Button>
+        <TextBox x:Name="passBox" Margin="30" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"></TextBox>
+        <Button x:Name="loginButt" Margin="40" Grid.Column="2" Grid.Row="3">Зарегистрироваться</Button>
+        <Image Grid.ColumnSpan="2" Margin="62,14,61,14" Grid.RowSpan="2" Source="main_cow.jpg" Stretch="Fill"/>
+    </Grid>
+</Window>

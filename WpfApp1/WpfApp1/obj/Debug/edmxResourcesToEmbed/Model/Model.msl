@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище DrozdovModelContainer" CdmEntityContainer="DrozdovEntities">
+    <EntitySetMapping Name="Ангар">
+      <EntityTypeMapping TypeName="DrozdovModel.Ангар">
+        <MappingFragment StoreEntitySet="Ангар">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+          <ScalarProperty Name="Id_используемого_корма" ColumnName="Id_используемого_корма" />
+          <ScalarProperty Name="Id_используемого_лекарства" ColumnName="Id_используемого_лекарства" />
+          <ScalarProperty Name="Id_сотрудника" ColumnName="Id_сотрудника" />
+          <ScalarProperty Name="Id_коровы" ColumnName="Id_коровы" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Вакцинация">
+      <EntityTypeMapping TypeName="DrozdovModel.Вакцинация">
+        <MappingFragment StoreEntitySet="Вакцинация">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_Заказа" ColumnName="Id_Заказа" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="Описание" ColumnName="Описание" />
+          <ScalarProperty Name="Срок_годности" ColumnName="Срок годности" />
+          <ScalarProperty Name="Дата_вакцинации" ColumnName="Дата вакцинации" />
+          <ScalarProperty Name="Дозировка" ColumnName="Дозировка" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Вес">
+      <EntityTypeMapping TypeName="DrozdovModel.Вес">
+        <MappingFragment StoreEntitySet="Вес">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_коровы" ColumnName="Id_коровы" />
+          <ScalarProperty Name="Дата_измерения" ColumnName="Дата измерения" />
+          <ScalarProperty Name="Вес1" ColumnName="Вес" />
+          <ScalarProperty Name="Единица_измерения" ColumnName="Единица измерения" />
+          <ScalarProperty Name="Примечание" ColumnName="Примечание" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Заказы">
+      <EntityTypeMapping TypeName="DrozdovModel.Заказы">
+        <MappingFragment StoreEntitySet="Заказы">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_клиента" ColumnName="Id_клиента" />
+          <ScalarProperty Name="Id_продукции" ColumnName="Id_продукции" />
+          <ScalarProperty Name="Дата_заказа" ColumnName="Дата заказа" />
+          <ScalarProperty Name="Статус_заказа" ColumnName="Статус заказа" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Заказы_у_поставщиков">
+      <EntityTypeMapping TypeName="DrozdovModel.Заказы_у_поставщиков">
+        <MappingFragment StoreEntitySet="Заказы_у_поставщиков">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_поставщика" ColumnName="Id_поставщика" />
+          <ScalarProperty Name="Название_товара" ColumnName="Название товара" />
+          <ScalarProperty Name="Количество_заказанного_товара" ColumnName="Количество заказанного товара" />
+          <ScalarProperty Name="Дата_заказа" ColumnName="Дата заказа" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Зарплата_сотрудника">
+      <EntityTypeMapping TypeName="DrozdovModel.Зарплата_сотрудника">
+        <MappingFragment StoreEntitySet="Зарплата_сотрудника">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_Выплаты" ColumnName="Id_Выплаты" />
+          <ScalarProperty Name="Id_Сотрудника" ColumnName="Id_Сотрудника" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Зарплаты">
+      <EntityTypeMapping TypeName="DrozdovModel.Зарплаты">
+        <MappingFragment StoreEntitySet="Зарплаты">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_сотрудника" ColumnName="Id_сотрудника" />
+          <ScalarProperty Name="Дата_выплаты" ColumnName="Дата выплаты" />
+          <ScalarProperty Name="Сумма_выплаты" ColumnName="Сумма выплаты" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Клиенты">
+      <EntityTypeMapping TypeName="DrozdovModel.Клиенты">
+        <MappingFragment StoreEntitySet="Клиенты">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+          <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+          <ScalarProperty Name="Уровень_доступа" ColumnName="Уровень доступа" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Корма">
+      <EntityTypeMapping TypeName="DrozdovModel.Корма">
+        <MappingFragment StoreEntitySet="Корма">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_заказа" ColumnName="Id_заказа" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="Описание" ColumnName="Описание" />
+          <ScalarProperty Name="Питательные_свойства" ColumnName="Питательные свойства" />
+          <ScalarProperty Name="Дата_использования" ColumnName="Дата использования" />
+          <ScalarProperty Name="Количество_использованного_корма" ColumnName="Количество использованного корма" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Коровы">
+      <EntityTypeMapping TypeName="DrozdovModel.Коровы">
+        <MappingFragment StoreEntitySet="Коровы">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_породы" ColumnName="Id_породы" />
+          <ScalarProperty Name="Id_продукции" ColumnName="Id_продукции" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Возраст" ColumnName="Возраст" />
+          <ScalarProperty Name="Пол" ColumnName="Пол" />
+          <ScalarProperty Name="Здоровье" ColumnName="Здоровье" />
+          <ScalarProperty Name="Вес" ColumnName="Вес" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Лекарства">
+      <EntityTypeMapping TypeName="DrozdovModel.Лекарства">
+        <MappingFragment StoreEntitySet="Лекарства">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_Заказа" ColumnName="Id_Заказа" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="Описание" ColumnName="Описание" />
+          <ScalarProperty Name="Срок_годности" ColumnName="Срок годности" />
+          <ScalarProperty Name="Дозировка" ColumnName="Дозировка" />
+          <ScalarProperty Name="Дата_использования" ColumnName="Дата использования" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="МедКнижка">
+      <EntityTypeMapping TypeName="DrozdovModel.МедКнижка">
+        <MappingFragment StoreEntitySet="МедКнижка">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_принимаемого_корма" ColumnName="Id_принимаемого_корма" />
+          <ScalarProperty Name="Id_принимаемых_лекарств" ColumnName="Id_принимаемых_лекарств" />
+          <ScalarProperty Name="Id_пройденной_вакцинации" ColumnName="Id_пройденной_вакцинации" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Объём_продаж">
+      <EntityTypeMapping TypeName="DrozdovModel.Объём_продаж">
+        <MappingFragment StoreEntitySet="Объём_продаж">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_продукта" ColumnName="Id_продукта" />
+          <ScalarProperty Name="Название_продукта" ColumnName="Название продукта" />
+          <ScalarProperty Name="Количество_продукции" ColumnName="Количество продукции" />
+          <ScalarProperty Name="Цена_продукции" ColumnName="Цена продукции" />
+          <ScalarProperty Name="Дата_продажи" ColumnName="Дата продажи" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Операция">
+      <EntityTypeMapping TypeName="DrozdovModel.Операция">
+        <MappingFragment StoreEntitySet="Операция">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Тип_операции" ColumnName="Тип операции" />
+          <ScalarProperty Name="Статус_операции" ColumnName="Статус операции" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Породы">
+      <EntityTypeMapping TypeName="DrozdovModel.Породы">
+        <MappingFragment StoreEntitySet="Породы">
+          <ScalarProperty Name="Id_породы" ColumnName="Id_породы" />
+          <ScalarProperty Name="Название_породы" ColumnName="Название породы" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Поставщики">
+      <EntityTypeMapping TypeName="DrozdovModel.Поставщики">
+        <MappingFragment StoreEntitySet="Поставщики">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Название_компании" ColumnName="Название компании" />
+          <ScalarProperty Name="Контактная_информация" ColumnName="Контактная информация" />
+          <ScalarProperty Name="Тип_поставляемых_материалов" ColumnName="Тип поставляемых материалов" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Продукция">
+      <EntityTypeMapping TypeName="DrozdovModel.Продукция">
+        <MappingFragment StoreEntitySet="Продукция">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="Тип" ColumnName="Тип" />
+          <ScalarProperty Name="Описание" ColumnName="Описание" />
+          <ScalarProperty Name="Цена" ColumnName="Цена" />
+          <ScalarProperty Name="Единица_измерения" ColumnName="Единица измерения" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Склад">
+      <EntityTypeMapping TypeName="DrozdovModel.Склад">
+        <MappingFragment StoreEntitySet="Склад">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_продукта" ColumnName="Id_продукта" />
+          <ScalarProperty Name="Количество" ColumnName="Количество" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Сотрудники">
+      <EntityTypeMapping TypeName="DrozdovModel.Сотрудники">
+        <MappingFragment StoreEntitySet="Сотрудники">
+          <ScalarProperty Name="Роль" ColumnName="Роль" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+          <ScalarProperty Name="Должность" ColumnName="Должность" />
+          <ScalarProperty Name="Дата_приёма_на_работу" ColumnName="Дата приёма на работу" />
+          <ScalarProperty Name="Стаж_работы_на_ферме" ColumnName="Стаж работы на ферме" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Уход_за_животными">
+      <EntityTypeMapping TypeName="DrozdovModel.Уход_за_животными">
+        <MappingFragment StoreEntitySet="Уход_за_животными">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_сотрудника" ColumnName="Id_сотрудника" />
+          <ScalarProperty Name="Id_коровы" ColumnName="Id_коровы" />
+          <ScalarProperty Name="Id_операции" ColumnName="Id_операции" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DrozdovModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
